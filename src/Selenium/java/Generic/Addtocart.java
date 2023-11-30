@@ -38,7 +38,7 @@ public class Addtocart {
             if(al.contains(formatedname)){
                 j++;
                 driver.findElements(By.xpath("//div[@class='product-action']/button")).get(i).click();
-                if(j==2)
+                if(j==products.length)
                     break;
             }
         }
