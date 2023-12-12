@@ -24,7 +24,7 @@ public class assertion {
         Thread.sleep(5000);
         Assert.assertFalse(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
         //The above method expects flase in the given condition so it will fail if the condition is true
-        driver.findElement(By.cssSelector("input[id*='ctl00_mainContent_chk_SeniorCitizenDiscount']")).click(); // here * before id works as regular expression whereas it searches for the given id name is matching for any id in the page
+        driver.findElement(By.cssSelector("input[id*='ctl00_mainContent_chk_SeniorCitizenDiscount']")).click(); // here * before id works as regular expression whereas it searches for the given id name is matching with any id in the page
         Assert.assertTrue(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
         Assert.assertEquals(driver.findElements(By.cssSelector("input[type='checkbox']")).size(),6);
         driver.quit();

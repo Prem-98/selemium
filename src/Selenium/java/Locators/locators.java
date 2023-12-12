@@ -12,20 +12,19 @@ import java.time.Duration;
 
 public class locators {
     public static void main(String[] args) throws InterruptedException {
-       WebDriverManager.chromedriver().setup();
-        ChromeOptions chromeOptions=new ChromeOptions();
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--remote-allow-origins=*");
         chromeOptions.addArguments("--start-maximized");
-       WebDriver driver= new ChromeDriver(chromeOptions);
+        WebDriver driver = new ChromeDriver(chromeOptions);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5)); //implicitwait
-        String password=getPassword(driver);
+        String password = getPassword(driver);
 
         driver.get("https://rahulshettyacademy.com/locatorspractice/");
 //        locators-
 
 //        id locator -> directly we give the value of id attribute
         driver.findElement(By.id("inputUsername")).sendKeys("Prem");
-
 
 
 //        name locator -> We give the value of name attribute if present
@@ -54,22 +53,23 @@ public class locators {
         driver.findElement(By.xpath("//button[contains(@class,'submit')]")).click();
         Thread.sleep(2000);
         System.out.println(driver.findElement(By.tagName("p")).getText());
-        Assert.assertEquals(driver.findElement(By.tagName("p")).getText(),"You are successfully logged in.");
-        Assert.assertEquals(driver.findElement(By.cssSelector("div[class='login-container'] h2")).getText(),"Hello prem,");
+        Assert.assertEquals(driver.findElement(By.tagName("p")).getText(), "You are successfully logged in.");
+        Assert.assertEquals(driver.findElement(By.cssSelector("div[class='login-container'] h2")).getText(), "Hello prem,");
         driver.findElement(By.xpath("//button[text()='Log Out']"));
         driver.quit();
 
     }
+
     public static String getPassword(WebDriver driver) throws InterruptedException {
         driver.get("https://rahulshettyacademy.com/locatorspractice/");
         driver.findElement(By.linkText("Forgot your password?")).click();
         Thread.sleep(1000);
         driver.findElement(By.cssSelector(".reset-pwd-btn")).click();
-        String passwordtext=driver.findElement(By.cssSelector("form p")).getText();
+        String passwordtext = driver.findElement(By.cssSelector("form p")).getText();
         //Please use temporary password 'rahulshettyacademy' to Login.
-        String [] arry1=passwordtext.split("'");
-        String [] arry2=arry1[1].split("'");
-        String password=arry2[0];
+        String[] arry1 = passwordtext.split("'");
+        String[] arry2 = arry1[1].split("'");
+        String password = arry2[0];
         return password;
 
     }

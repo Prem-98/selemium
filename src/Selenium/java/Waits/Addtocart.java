@@ -1,4 +1,4 @@
-package Generic;
+package Waits;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -6,12 +6,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.lang.reflect.Array;
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Addtocart {
     public static void main(String arg[]) throws InterruptedException {
@@ -21,9 +23,10 @@ public class Addtocart {
         chromeOptions.addArguments("--remote-allow-origins=*");
         chromeOptions.addArguments("--disable-notifications");
         driver.manage().window().maximize();
+//        Implicit wait
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
-        Thread.sleep(5000);
         String [] products={"Cucumber","Beetroot"};
         int j=0;
 
@@ -42,5 +45,14 @@ public class Addtocart {
                     break;
             }
         }
+        driver.findElement(By.cssSelector("img[alt='Cart']")).click();
+        driver.findElement(By.xpath("//button[contains(text(),'PROCEED TO CHECKOUT')]")).click();
+        driver.findElement(By.cssSelector("input.promocode")).sendKeys("rahulshettyacademy");
+        driver.findElement(By.cssSelector("button.promoBtn")).click();
+//        Explicit wait
+        WebDriverWait w=new WebDriverWait(driver,Duration.ofSeconds(5));
+        w.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("span.promoInfo")));
+        System.out.println(driver.findElement(By.cssSelector("span.promoInfo")).getText());
         driver.quit();
+
 }}
