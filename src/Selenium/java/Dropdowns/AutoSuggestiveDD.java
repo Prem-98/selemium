@@ -23,14 +23,6 @@ public class AutoSuggestiveDD {
         chromeOptions.addArguments("--remote-allow-origins=*");
         chromeOptions.addArguments("--disable-notifications");
         driver.manage().window().maximize(); // for mazimizing the browser
-//        WebDriverManager.edgedriver().setup();
-//
-//        EdgeOptions edgeoptions = new EdgeOptions();
-//        edgeoptions.addArguments("--remote-allow-origins=*");
-//        edgeoptions.addArguments("--start-maximized");
-//        edgeoptions.addArguments("--disable-notifications");
-//        WebDriver driver = new EdgeDriver(edgeoptions);
-//        driver.manage().window().maximize(); // for mazimizing the browser
         driver.get("https://www.google.com/");
         // here i have kept navigate even after openinig the URL because edge was throwing an notification because of that elements were not iterable to handle that i have added navigate agian .
         Thread.sleep(3000);
