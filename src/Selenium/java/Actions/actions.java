@@ -23,7 +23,7 @@ public class actions {
         Actions a=new Actions(driver);
         a.moveToElement(driver.findElement(By.id("twotabsearchtextbox"))).click().keyDown(Keys.SHIFT).sendKeys("prem").doubleClick().build().perform();
 
-        a.moveToElement(driver.findElement(By.id("nav-link-accountList"))).contextClick().build().perform();
+        a.moveToElement(driver.findElement(By.id("nav-link-accountList"))).contextClick().build().perform();  //right click
         Thread.sleep(500);
         driver.quit();
 
