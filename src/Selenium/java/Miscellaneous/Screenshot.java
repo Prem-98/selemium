@@ -23,7 +23,7 @@ public class Screenshot {
         driver.get("https://www.google.co.in/");
         File src=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(src,new File("C:\\Users\\premk\\IdeaProjects\\mvn2\\Screenshot\\TestSS.png"));
-        driver.close();
+        driver.quit();
 
     }
 }
