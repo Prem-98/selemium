@@ -32,6 +32,28 @@ public class StreamsExample {
         List<String> sortedList= originalList.stream().sorted().toList();
         //comparing both the lists
         Assert.assertTrue(originalList.equals(sortedList));
+
+        //getting the price of beans
+        List<String> price=elements.stream().filter(s->s.getText().contains("Beans")).map(s->getPrice(s)).collect(Collectors.toList());
+        price.forEach(p-> System.out.println("Price of Beans is : "+p));
+        //getting price of any item that is present on the webpage (to serach in all other pages)
+        List<String> cost;
+        do{
+            List<WebElement> items=driver.findElements(By.xpath("//tr/td[1]"));
+            cost=items.stream().filter(s->s.getText().contains("Rice")).map(s->getPrice(s)).collect(Collectors.toList());
+            cost.forEach(p-> System.out.println("Price of item is: "+p));
+            if(cost.size()<1){
+                driver.findElement(By.cssSelector("[aria-label='Next']")).click();
+            }
+
+        }while (cost.size()<1);
+
+
         driver.quit();
+    }
+
+    private static String getPrice(WebElement a) {
+        String price=a.findElement(By.xpath("following-sibling::td[1]")).getText();
+        return price;
     }
 }
