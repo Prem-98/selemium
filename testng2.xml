@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/premk/IdeaProjects/mvn2">
+       <packages>
+           <package name="TestNG"></package>
+       </packages></test></suite>
+
+<!--here we are running entire package using xml file-->
