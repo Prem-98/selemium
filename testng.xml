@@ -5,7 +5,7 @@
         <classes>
             <class name="TestNG.TestNG">
                 <methods>
-                    <exclude name="print2"></exclude> <!--here we are excluding print2 method from TestNG class file-->
+                    <exclude name="print.*"></exclude> <!--here we are excluding methods having print word from TestNG class file-->
                 </methods>
             </class>
         </classes></test></suite>

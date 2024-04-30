@@ -13,4 +13,8 @@ public class test2 {
     public void webSignout(){
         System.out.println("Webpage logout");
     }
+    @Test(groups = {"Loan"})
+    public void goldLoan(){
+        System.out.println("This is gold loan related ");
+    }
 }
