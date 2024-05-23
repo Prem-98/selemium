@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <parameter name="URL" value="Rahul Shetty Acadamy.com"/>  <!--here we are giving parameter in the suite level this can be used anywhere inside the suite-->
+    <test verbose="2" preserve-order="true" name="C:/Users/premk/IdeaProjects/mvn2">
+        <parameter name="OTP" value="U KNOW"/>     <!--here we are giving parameter in the Test level this can be used only within this test file -->
+        <parameter name="username" value="slkf@tcs.com"/>  <!-- we can give multiple parameters -->
+        <classes>
+            <class name="TestNG.TestNG">
+                <methods>
+                    <include name="api.*"/>
+                </methods>
+            </class>
+            <class name="TestNG.test2"/>
+        </classes>
+      </test></suite>
+
