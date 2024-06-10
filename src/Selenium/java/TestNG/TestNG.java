@@ -1,6 +1,5 @@
 package TestNG;
 
-import org.apache.hc.core5.util.Timeout;
 import org.testng.annotations.*;
 
 public class TestNG {
@@ -24,19 +23,19 @@ public class TestNG {
         System.out.println("The course name is selenium");
     }
 
-    @Parameters({"URL"})
-    @Test
-    public void apiLogin(String url){
-        System.out.println("API Login");
-        System.out.println(url);
-
-    }
-    @Parameters({"OTP","username"})
-    @Test
-    public void apiotp(String otp,String username){
-        System.out.println("otp is "+otp);
-        System.out.println("user name is "+username);
-    }
+//    @Parameters({"URL"})
+//    @Test
+//    public void apiLogin(String url){
+//        System.out.println("API Login");
+//        System.out.println(url);
+//
+//    }
+//    @Parameters({"OTP","username"})
+//    @Test
+//    public void apiotp(String otp,String username){
+//        System.out.println("otp is "+otp);
+//        System.out.println("user name is "+username);
+//    }
     @Test(groups = {"Loan"})
     public void loan(){
         System.out.println("this the loan page");
@@ -45,6 +44,16 @@ public class TestNG {
     public void creditLoan(){
         System.out.println("This is credit card loan");
     }
+
+// This is Data Provider annotaion.This annotation is provided test level and it is independant of xml file.here we are getting data from getData class
+    @Test(dataProvider = "getData")
+    public void creditScore(String username,String password){
+        System.out.println(username);
+        System.out.println("||||||||||");
+        System.out.println(password);
+        System.out.println("_____________________");
+    }
+
 
     @BeforeTest
     public void start(){
@@ -77,6 +86,21 @@ public class TestNG {
     @AfterClass
     public void afClass(){
         System.out.println("This will be executed After the methods in this class and this is class specific");
+    }
+    @DataProvider
+    public Object[][] getData(){
+        Object[][] data=new Object[3][2];
+        //Fist set - with good credit score
+        data[0][0]="GoodCreditScore";
+        data[0][1]="Password";
+        //Second set - with bad credit score
+        data[1][0]="BadCreditScore";
+        data[1][1]="Password2";
+        //Fradulent credit score
+        data[2][0]="FraudCreditScore";
+        data[2][1]="Password3";
+        return data;
+
     }
 
 }
