@@ -1,5 +1,6 @@
 package TestNG;
 
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 public class TestNG {
@@ -21,21 +22,23 @@ public class TestNG {
     @Test
     public void zprem(){
         System.out.println("The course name is selenium");
+
     }
 
-//    @Parameters({"URL"})
-//    @Test
-//    public void apiLogin(String url){
-//        System.out.println("API Login");
-//        System.out.println(url);
-//
-//    }
-//    @Parameters({"OTP","username"})
-//    @Test
-//    public void apiotp(String otp,String username){
-//        System.out.println("otp is "+otp);
-//        System.out.println("user name is "+username);
-//    }
+    @Parameters({"URL"})
+    @Test
+    public void apiLogin(String url){
+        System.out.println("API Login");
+        System.out.println(url);
+        Assert.assertTrue(false);
+
+    }
+    @Parameters({"OTP","username"})
+    @Test
+    public void apiotp(String otp,String username){
+        System.out.println("otp is "+otp);
+        System.out.println("user name is "+username);
+    }
     @Test(groups = {"Loan"})
     public void loan(){
         System.out.println("this the loan page");
