@@ -5,7 +5,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.SimpleTimeZone;
 
-public class hashmap {
+public class hashmap{
+
     public static void main(String[] args){
 //        HashMap<String,String> map=new HashMap<>();
 //        map.put("discount party1","POL-TL");
